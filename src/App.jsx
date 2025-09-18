@@ -1,4 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
+import { FaWhatsapp, FaInstagram, FaLinkedin, FaPhone } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+import { SiUpwork, SiFreelancer } from "react-icons/si";
 
 function NavLink({ href, label }) {
   return (
@@ -81,25 +85,26 @@ export default function App() {
       <header className="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-slate-900/70 bg-slate-900/80 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between h-14">
-            <a
-              href="#home"
-              className="font-extrabold tracking-widest text-white"
-            >
-              SKYVAR
+            <a href="#home" className="inline-flex items-center">
+              <img
+                src="/SkyvarDesigns2.png"
+                alt="Skyvar Design"
+                className="h-30 w-auto brightness-0 invert opacity-90 hover:opacity-100 transition"
+              />
             </a>
             {/* Mobile Menu Button */}
-            <button 
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 text-slate-200 hover:text-white"
               aria-label="Toggle menu"
             >
-              <svg 
-                className="w-6 h-6" 
-                fill="none" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth="2" 
-                viewBox="0 0 24 24" 
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 {isMenuOpen ? (
@@ -117,9 +122,13 @@ export default function App() {
               <NavLink href="#contact" label="Contact" />
             </nav>
           </div>
-          
+
           {/* Mobile Navigation */}
-          <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} py-4 border-t border-white/5`}>
+          <div
+            className={`md:hidden ${
+              isMenuOpen ? "block" : "hidden"
+            } py-4 border-t border-white/5`}
+          >
             <nav className="flex flex-col gap-4">
               <NavLink href="#about" label="About" />
               <NavLink href="#services" label="Service" />
@@ -134,7 +143,7 @@ export default function App() {
       <section id="home" className="relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url(/Back%201.jpg)" }}
+          style={{ backgroundImage: "url(/Back1.jpg)" }}
         />
         <div className="absolute inset-0 bg-slate-900/50" />
         <div className="relative max-w-7xl mx-auto px-4 md:px-6">
@@ -149,18 +158,19 @@ export default function App() {
                 Bring Your Imagination To Reality
               </p>
             </div>
-            <div className="md:flex-1 flex justify-center px-4">
-              <div className="relative w-[180px] sm:w-[220px] md:w-[300px]">
-                <div className="absolute -inset-4 bg-black/20 rounded-[32px] blur-xl" />
+            <div className="md:flex-1 flex justify-center">
+              <div className="relative w-full">
                 <img
-                  src="/Profile%20Pic%201.jpg"
+                  src="/ProfilePic1.jpg"
                   alt="Brand Owner"
                   className="relative rounded-[28px] w-full h-[240px] sm:h-[300px] md:h-[360px] object-cover ring-2 ring-white/20"
                 />
               </div>
             </div>
             <div className="md:flex-1 text-white text-center md:text-left">
-              <p className="text-xl sm:text-2xl md:text-3xl font-bold">Brand Owner</p>
+              <p className="text-xl sm:text-2xl md:text-3xl font-bold">
+                Brand Owner
+              </p>
               <p className="text-xl sm:text-2xl md:text-4xl font-extrabold mt-2 bg-gradient-to-tr from-white to-sky-200 bg-clip-text text-transparent">
                 Oreoluwa David
               </p>
@@ -191,7 +201,7 @@ export default function App() {
         <div className="absolute inset-0 bg-slate-900/50" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-14 md:py-20">
           <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
+            <div className="bg-white/10 backdrop-blur-xl ring-1 ring-white/20 p-6 md:p-10 rounded-3xl">
               <h3 className="text-white text-2xl font-extrabold mb-4">
                 Get to know the brand SKYVAR
               </h3>
@@ -212,11 +222,11 @@ export default function App() {
                 design with SKYVAR Designs.
               </p>
             </div>
-            <div className="flex justify-center md:justify-end">
+            <div className="flex justify-center h-full md:justify-end">
               <img
-                src="/Profile Pic 1.jpg"
+                src="/MYPIC.jpg"
                 alt="About visual"
-                className="w-[360px] h-[260px] md:w-[420px] md:h-[300px] rounded-2xl object-cover ring-1 ring-white/10"
+                className="w-[360px] h-[560px] md:w-[500px] md:h-full rounded-2xl object-cover ring-1 ring-white/10"
               />
             </div>
           </div>
@@ -226,19 +236,22 @@ export default function App() {
       {/* Services */}
       <section id="services" className="bg-slate-850/20">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-14 md:py-20">
-          <SectionHeading
-            eyebrow="Our Design Services include"
-            title="What we can do for you"
-          />
+          <SectionHeading title="What we can do for you" />
           <div className="mt-10 grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 px-4 sm:px-0">
             {services.map((s) => (
               <article
                 key={s.title}
-                className="rounded-2xl overflow-hidden bg-slate-800/60 ring-1 ring-white/10 hover:ring-sky-400/40 transition"
+                className="group min-h-[342px] relative rounded-2xl overflow-hidden bg-slate-800/60 ring-1 ring-white/10 hover:ring-sky-400/40 transition"
               >
-                <img src={s.img} alt="" className="h-48 sm:h-52 w-full object-cover" />
+                <img
+                  src={s.img}
+                  alt=""
+                  className=" group-hover:absolute  group-hover:z-10 group-hover:h-full group-hover:w-full h-48 sm:h-52 w-full object-cover left-0 top-0"
+                />
                 <div className="p-4 sm:p-5">
-                  <h3 className="font-bold text-white text-base sm:text-lg">{s.title}</h3>
+                  <h3 className="font-bold text-white text-base sm:text-lg">
+                    {s.title}
+                  </h3>
                   <p className="text-slate-300 text-sm mt-2 leading-relaxed">
                     {s.desc}
                   </p>
@@ -290,21 +303,48 @@ export default function App() {
             and exclusive promotions.
           </p>
           <div className="mt-6 flex items-center justify-center gap-5">
-            <SocialIcon label="WhatsApp" href="#">
-              <path d="M16.98 13.5c-.27-.14-1.6-.79-1.85-.88-.25-.1-.43-.14-.62.14-.18.27-.71.88-.87 1.05-.16.18-.32.2-.6.07-.27-.14-1.14-.42-2.17-1.34-.8-.7-1.34-1.57-1.5-1.84-.16-.27-.02-.42.12-.56.13-.13.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.86-2.05-.23-.55-.46-.47-.62-.48-.16-.01-.34-.01-.52-.01-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3 0 1.36.99 2.67 1.13 2.86.14.18 1.94 2.97 4.7 4.16.66.29 1.18.46 1.58.58.66.21 1.26.18 1.73.11.53-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z" />
-            </SocialIcon>
-            <SocialIcon label="Twitter" href="#">
-              <path d="M19 3.5c-.7.4-1.4.6-2.2.8.8-.5 1.3-1.2 1.6-2.1-.8.5-1.6.8-2.5 1-1.5-1.6-4.2-.9-4.7 1.2-.2.7 0 1.5.5 2-2.7-.1-5.1-1.4-6.7-3.5-.9 1.5-.4 3.4 1 4.4-.6 0-1.1-.2-1.6-.4 0 1.9 1.3 3.5 3.1 3.9-.6.2-1.3.2-1.9.1.6 1.7 2.2 2.8 4 2.8-1.6 1.3-3.6 2-5.6 2-.4 0-.7 0-1.1-.1 2 1.3 4.3 2 6.6 2 8 0 12.4-6.9 12.2-13.1.8-.6 1.3-1.2 1.8-2z" />
-            </SocialIcon>
-            <SocialIcon label="Instagram" href="#">
-              <path d="M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm0-3.5c2 0 2.2 0 3 .1.8.1 1.3.3 1.8.6.5.3.9.7 1.2 1.2.3.5.5 1 .6 1.8.1.8.1 1 .1 3s0 2.2-.1 3c-.1.8-.3 1.3-.6 1.8-.3.5-.7.9-1.2 1.2-.5.3-1 .5-1.8.6-.8.1-1 .1-3 .1s-2.2 0-3-.1c-.8-.1-1.3-.3-1.8-.6-.5-.3-.9-.7-1.2-1.2-.3-.5-.5-1-.6-1.8C7 14.2 7 14 7 12s0-2.2.1-3c.1-.8.3-1.3.6-1.8.3-.5.7-.9 1.2-1.2.5-.3 1-.5 1.8-.6.8-.1 1-.1 3-.1zm0 2.4a6.1 6.1 0 1 0 0 12.2 6.1 6.1 0 0 0 0-12.2zm4.6-.9a1.1 1.1 0 1 0 0-2.2 1.1 1.1 0 0 0 0 2.2z" />
-            </SocialIcon>
+            <SocialIcon
+              label="WhatsApp"
+              href="https://wa.me/message/25C6CSVKIBCAJ1"
+              icon={FaWhatsapp}
+            />
+            <SocialIcon label="X (Twitter)" href="#" icon={FaXTwitter} />
+            <SocialIcon label="Instagram" href="#" icon={FaInstagram} />
+            <SocialIcon
+              label="Email"
+              href="mailto:adeyemioroluwa37@gmail.com"
+              icon={MdEmail}
+            />
+            <SocialIcon
+              label="LinkedIn"
+              href="https://www.linkedin.com/in/oreoluwa-david-840044236/"
+              icon={FaLinkedin}
+            />
+            <SocialIcon
+              label="Phone"
+              href="tel:+2348051254293"
+              icon={FaPhone}
+            />
+            <SocialIcon
+              label="Upwork"
+              href="https://www.upwork.com/freelancers/~01e0cabc9f1f887914/"
+              icon={SiUpwork}
+            />
+            <SocialIcon
+              label="Freelancer"
+              href="https://www.freelancer.com/u/SKYVAR"
+              icon={SiFreelancer}
+            />
           </div>
         </div>
       </section>
 
       {/* Contact */}
-      <section id="contact" className="relative bg-cover bg-bottom" style={{ backgroundImage: "url(/Back%202.jpg)" }}>
+      <section
+        id="contact"
+        className="relative bg-cover bg-bottom"
+        style={{ backgroundImage: "url(/Back%202.jpg)" }}
+      >
         <div className="absolute inset-0 bg-slate-900/60" />
         <div className="relative max-w-7xl mx-auto px-4 md:px-6 py-14 md:py-20">
           <SectionHeading title="Contact" />
@@ -355,16 +395,14 @@ export default function App() {
   );
 }
 
-function SocialIcon({ href, label, children }) {
+function SocialIcon({ href, label, icon: Icon }) {
   return (
     <a
       aria-label={label}
       href={href}
       className="size-10 inline-flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition"
     >
-      <svg viewBox="0 0 24 24" className="size-5 fill-current" aria-hidden>
-        {children}
-      </svg>
+      <Icon className="size-5" aria-hidden />
     </a>
   );
 }
@@ -373,18 +411,23 @@ function Carousel() {
   const slides = [
     {
       name: "Ajibola O. Ojo",
-      avatar: "/Profile%20Pic%201.jpg",
+      avatar: "https://images.unsplash.com/photo-1678282956162-f4d7e699f135?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       text: "I love how professional and creative the designs are. My brand looks more polished and engaging, definitely coming back for more projects.",
     },
     {
       name: "Benjamin David",
-      avatar: "/Profile%20Pic%201.jpg",
+      avatar: "https://images.unsplash.com/photo-1546458904-143d1674858d?q=80&w=531&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       text: "Working with SKYVAR was seamless. The attention to detail elevated our brand visuals beyond expectations.",
     },
     {
       name: "James",
-      avatar: "/Profile%20Pic%201.jpg",
+      avatar: "/drReview.jpeg",
       text: "SKYVAR Designs transformed our ideas into something truly imaginative. The communication was smooth and delivery on time.",
+    },
+    {
+      name: "Ajiboye S. Adebayo",
+      avatar: "/displayPics.png",
+      text: "The brand package was spot‑on and delivered quickly. Highly recommend.",
     },
   ];
 
@@ -418,7 +461,7 @@ function Carousel() {
                   : " opacity-0 pointer-events-none")
               }
             >
-              <div className="w-[320px] md:w-[420px] bg-white rounded-2xl shadow-xl p-6">
+              <div className="w-[320px] [@media(max-width:420px)]:w-[280px] md:w-[420px] min-h-[200px] max-md:min-h-[250px] bg-white rounded-2xl shadow-xl p-6">
                 <div className="flex items-center gap-3">
                   <img
                     src={s.avatar}
