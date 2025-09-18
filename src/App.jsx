@@ -230,7 +230,7 @@ export default function App() {
               <img
                 src="/MYPIC.jpg"
                 alt="About visual"
-                className="w-[360px] h-[560px] md:w-[500px] md:h-full rounded-2xl object-cover ring-1 ring-white/10"
+                className="w-[360px] h-[400px] md:w-[500px] md:h-full rounded-2xl object-cover ring-1 ring-white/10"
               />
             </div>
           </div>
