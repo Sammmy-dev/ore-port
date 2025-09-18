@@ -63,17 +63,21 @@ export default function App() {
       {
         title: "Brand Logo Designs",
         desc: "Unique, timeless logos that capture your brand identity and leave a lasting impression.",
-        img: "/Coffee.jpg",
+        images: [
+          "/Logo%20final.png",
+          "/displayPics.png",
+          "/SkyvarDesigns2.png",
+        ],
       },
       {
         title: "Social Media Flyer Designs",
         desc: "Engaging, scroll‑stopping flyers tailored for social media to connect instantly.",
-        img: "/Calmoasis%201.jpg",
+        images: ["/Calmoasis%201.jpg", "/Coffee.jpg"],
       },
       {
         title: "Brand Publicity Designs",
         desc: "Creative designs crafted to boost visibility and communicate your message with impact.",
-        img: "/Logo%20final.png",
+        images: ["/Back%202.jpg", "/Back1.jpg"],
       },
     ],
     []
@@ -237,26 +241,32 @@ export default function App() {
       <section id="services" className="bg-slate-850/20">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-14 md:py-20">
           <SectionHeading title="What we can do for you" />
-          <div className="mt-10 grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 px-4 sm:px-0">
+          <div className="mt-10 space-y-10 px-4 sm:px-0">
             {services.map((s) => (
-              <article
-                key={s.title}
-                className="group min-h-[342px] relative rounded-2xl overflow-hidden bg-slate-800/60 ring-1 ring-white/10 hover:ring-sky-400/40 transition"
-              >
-                <img
-                  src={s.img}
-                  alt=""
-                  className=" group-hover:absolute  group-hover:z-10 group-hover:h-full group-hover:w-full h-48 sm:h-52 w-full object-cover left-0 top-0"
-                />
-                <div className="p-4 sm:p-5">
-                  <h3 className="font-bold text-white text-base sm:text-lg">
+              <section key={s.title} className="">
+                <div className="p-4 sm:p-6 rounded-2xl bg-slate-800/60 ring-1 ring-white/10">
+                  <h3 className="font-bold text-white text-lg sm:text-xl">
                     {s.title}
                   </h3>
                   <p className="text-slate-300 text-sm mt-2 leading-relaxed">
                     {s.desc}
                   </p>
                 </div>
-              </article>
+                <div className="mt-4 flex flex-wrap items-center justify-start gap-4">
+                  {s.images.map((src, i) => (
+                    <figure
+                      key={src + i}
+                      className="relative overflow-hidden md:h-[312px] md:w-[330px] h-[208px] w-[220px] rounded-xl ring-1 ring-white/10 bg-slate-800/40"
+                    >
+                      <img
+                        src={src}
+                        alt={`${s.title} ${i + 1}`}
+                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
+                      />
+                    </figure>
+                  ))}
+                </div>
+              </section>
             ))}
           </div>
         </div>
@@ -302,7 +312,7 @@ export default function App() {
             Join our community and be the first to know about new design updates
             and exclusive promotions.
           </p>
-          <div className="mt-6 flex items-center justify-center gap-5">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-5">
             <SocialIcon
               label="WhatsApp"
               href="https://wa.me/message/25C6CSVKIBCAJ1"
@@ -340,7 +350,7 @@ export default function App() {
       </section>
 
       {/* Contact */}
-      <section
+      {/* <section
         id="contact"
         className="relative bg-cover bg-bottom"
         style={{ backgroundImage: "url(/Back%202.jpg)" }}
@@ -369,7 +379,7 @@ export default function App() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Footer */}
       <footer className="border-t border-white/5">
@@ -411,12 +421,14 @@ function Carousel() {
   const slides = [
     {
       name: "Ajibola O. Ojo",
-      avatar: "https://images.unsplash.com/photo-1678282956162-f4d7e699f135?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      avatar:
+        "https://images.unsplash.com/photo-1678282956162-f4d7e699f135?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       text: "I love how professional and creative the designs are. My brand looks more polished and engaging, definitely coming back for more projects.",
     },
     {
       name: "Benjamin David",
-      avatar: "https://images.unsplash.com/photo-1546458904-143d1674858d?q=80&w=531&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      avatar:
+        "https://images.unsplash.com/photo-1546458904-143d1674858d?q=80&w=531&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       text: "Working with SKYVAR was seamless. The attention to detail elevated our brand visuals beyond expectations.",
     },
     {
