@@ -65,19 +65,44 @@ export default function App() {
         desc: "Unique, timeless logos that capture your brand identity and leave a lasting impression.",
         images: [
           "/Logo%20final.png",
-          "/displayPics.png",
-          "/SkyvarDesigns2.png",
+          "/20230104_005109.jpg",
+          "/Coffee.jpg",
+          "/sign.png",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.51.52.jpeg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.48.48(1).jpeg",
         ],
       },
       {
         title: "Social Media Flyer Designs",
         desc: "Engaging, scroll‑stopping flyers tailored for social media to connect instantly.",
-        images: ["/Calmoasis%201.jpg", "/Coffee.jpg"],
+        images: [
+          "/flyer.png",
+          "/Stand%20Out.png",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.54.13.jpeg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.54.12(1).jpeg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.54.12.jpeg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.48.48.jpeg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.48.47(2).jpeg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.48.47(1).jpeg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.48.47.jpeg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.48.46(2).jpeg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.48.46(1).jpeg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.48.46.jpeg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.48.45.jpeg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.47.22.jpeg",
+        ],
       },
       {
         title: "Brand Publicity Designs",
         desc: "Creative designs crafted to boost visibility and communicate your message with impact.",
-        images: ["/Back%202.jpg", "/Back1.jpg"],
+        images: [
+          "/Solar%20panel.png",
+          "/Calmoasis%201.jpg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.54.13(1).jpeg",
+          "/foot.jpg",
+          "/Rhino%20BUSINESSCARD%20IMAGE.jpg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.46.02.jpeg",
+        ],
       },
     ],
     []
@@ -163,11 +188,11 @@ export default function App() {
               </p>
             </div>
             <div className="md:flex-1 flex justify-center">
-              <div className="relative w-full">
+              <div className="relative w-full rounded-[28px] overflow-hidden">
                 <img
                   src="/ProfilePic1.jpg"
                   alt="Brand Owner"
-                  className="relative rounded-[28px] w-full h-[240px] sm:h-[300px] md:h-[360px] object-cover ring-2 ring-white/20"
+                  className="relative top-15 scale-150 w-full h-[240px] sm:h-[300px] md:h-[360px] object-cover ring-2 ring-white/20"
                 />
               </div>
             </div>
@@ -309,8 +334,8 @@ export default function App() {
             Stay connected with us
           </h3>
           <p className="text-slate-400 text-sm mt-2">
-            Join our community and be the first to know about new design updates
-            and exclusive promotions.
+            Ready to bring your vision to life? Get in touch for personalized design solutions
+            and let's create something amazing together.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-5">
             <SocialIcon
@@ -318,8 +343,6 @@ export default function App() {
               href="https://wa.me/message/25C6CSVKIBCAJ1"
               icon={FaWhatsapp}
             />
-            <SocialIcon label="X (Twitter)" href="#" icon={FaXTwitter} />
-            <SocialIcon label="Instagram" href="#" icon={FaInstagram} />
             <SocialIcon
               label="Email"
               href="mailto:adeyemioroluwa37@gmail.com"
@@ -329,11 +352,6 @@ export default function App() {
               label="LinkedIn"
               href="https://www.linkedin.com/in/oreoluwa-david-840044236/"
               icon={FaLinkedin}
-            />
-            <SocialIcon
-              label="Phone"
-              href="tel:+2348051254293"
-              icon={FaPhone}
             />
             <SocialIcon
               label="Upwork"
@@ -422,7 +440,7 @@ function Carousel() {
     {
       name: "Ajibola O. Ojo",
       avatar:
-        "https://images.unsplash.com/photo-1678282956162-f4d7e699f135?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "/WhatsApp%20Image%202025-09-18%20at%2018.43.05.jpeg",
       text: "I love how professional and creative the designs are. My brand looks more polished and engaging, definitely coming back for more projects.",
     },
     {
