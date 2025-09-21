@@ -281,7 +281,7 @@ export default function App() {
                   {s.images.map((src, i) => (
                     <figure
                       key={src + i}
-                      className="relative overflow-hidden md:h-[312px] md:w-[330px] h-[208px] w-[220px] rounded-xl ring-1 ring-white/10 bg-slate-800/40"
+                      className="relative overflow-hidden md:h-[312px] md:w-[330px] sm:h-[208px] sm:w-[220px] w-[160px] h-[150px] rounded-xl ring-1 ring-white/10 bg-slate-800/40"
                     >
                       <img
                         src={src}
