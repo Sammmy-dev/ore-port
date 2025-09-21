@@ -1,8 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { FaWhatsapp, FaInstagram, FaLinkedin, FaPhone } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { SiUpwork, SiFreelancer } from "react-icons/si";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function NavLink({ href, label }) {
   return (
@@ -57,6 +62,14 @@ function SectionHeading({ eyebrow, title, subtitle }) {
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const heroRef = useRef(null);
+  const heroTitleRef = useRef(null);
+  const heroSubtitleRef = useRef(null);
+  const heroImageRef = useRef(null);
+  const heroNameRef = useRef(null);
+  const aboutRef = useRef(null);
+  const servicesRef = useRef(null);
+  const reviewsRef = useRef(null);
 
   const services = useMemo(
     () => [
@@ -107,6 +120,107 @@ export default function App() {
     ],
     []
   );
+
+  // Hero section animation
+  useGSAP(() => {
+    if (heroTitleRef.current) {
+      // Split text into words and animate while preserving line breaks
+      const titleText = heroTitleRef.current.innerHTML;
+      heroTitleRef.current.innerHTML = titleText
+        .replace(/<br\s*\/?>/gi, '|LINEBREAK|')
+        .split(' ')
+        .map(word => {
+          if (word.includes('|LINEBREAK|')) {
+            return word.replace(/\|LINEBREAK\|/g, '<br/>');
+          }
+          return `<span class="inline-block">${word}</span>`;
+        })
+        .join(' ');
+
+      const words = heroTitleRef.current.querySelectorAll('span');
+      
+      gsap.set(words, { y: 100, opacity: 0 });
+      
+      gsap.to(words, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out",
+        delay: 0.5
+      });
+    }
+
+    // Animate other hero elements
+    gsap.fromTo([heroSubtitleRef.current, heroImageRef.current, heroNameRef.current], 
+      { y: 50, opacity: 0 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        duration: 1, 
+        stagger: 0.2, 
+        ease: "power3.out",
+        delay: 1.2
+      }
+    );
+  }, { scope: heroRef });
+
+  // Scroll trigger animations for sections
+  useGSAP(() => {
+    // About section animation
+    gsap.fromTo(aboutRef.current?.querySelectorAll('.animate-on-scroll'), 
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: aboutRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // Services section animation
+    gsap.fromTo(servicesRef.current?.querySelectorAll('.animate-on-scroll'), 
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: servicesRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // Reviews section animation
+    gsap.fromTo(reviewsRef.current?.querySelectorAll('.animate-on-scroll'), 
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: reviewsRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  });
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100">
@@ -169,7 +283,7 @@ export default function App() {
       </header>
 
       {/* Hero */}
-      <section id="home" className="relative overflow-hidden">
+      <section ref={heroRef} id="home" className="relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url(/Back1.jpg)" }}
@@ -178,17 +292,17 @@ export default function App() {
         <div className="relative max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row items-center gap-8 pt-14 md:pt-20 pb-16 md:pb-20">
             <div className="md:flex-1 text-center md:text-left">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight text-white">
+              <h1 ref={heroTitleRef} className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight text-white">
                 SKYVAR
                 <br />
                 DESIGNS
               </h1>
-              <p className="text-white/80 text-sm sm:text-base mb-3">
+              <p ref={heroSubtitleRef} className="text-white/80 text-sm sm:text-base mb-3">
                 Bring Your Imagination To Reality
               </p>
             </div>
             <div className="md:flex-1 flex justify-center">
-              <div className="relative w-full rounded-[28px] overflow-hidden">
+              <div ref={heroImageRef} className="relative w-full rounded-[28px] overflow-hidden">
                 <img
                   src="/ProfilePic1.jpg"
                   alt="Brand Owner"
@@ -196,7 +310,7 @@ export default function App() {
                 />
               </div>
             </div>
-            <div className="md:flex-1 text-white text-center md:text-left">
+            <div ref={heroNameRef} className="md:flex-1 text-white text-center md:text-left">
               <p className="text-xl sm:text-2xl md:text-3xl font-bold">
                 Brand Owner
               </p>
@@ -222,7 +336,7 @@ export default function App() {
       </section>
 
       {/* About */}
-      <section id="about" className="relative">
+      <section ref={aboutRef} id="about" className="relative">
         <div
           className="absolute inset-0 bg-cover bg-top"
           style={{ backgroundImage: "url(/Back%202.jpg)" }}
@@ -230,13 +344,13 @@ export default function App() {
         <div className="absolute inset-0 bg-slate-900/50" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-14 md:py-20">
           <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div className="bg-white/10 backdrop-blur-xl ring-1 ring-white/20 p-6 md:p-10 rounded-3xl">
+            <div className="animate-on-scroll bg-white/10 backdrop-blur-xl ring-1 ring-white/20 p-6 md:p-10 rounded-3xl">
               <h3 className="text-white text-2xl font-extrabold mb-4">
                 Get to know the brand SKYVAR
               </h3>
               <p className="text-slate-300 leading-relaxed text-sm md:text-base">
                 At SKYVAR Designs, we harness the power of innovative design to
-                elevate your brand’s presence in the digital landscape. Our
+                elevate your brand's presence in the digital landscape. Our
                 dedicated team of creative professionals works closely with you
                 to transform your ideas into stunning visuals that resonate.
                 From branding strategies to eye‑catching graphic designs, we
@@ -244,14 +358,14 @@ export default function App() {
                 that truly reflect your vision.
               </p>
               <p className="text-slate-300 leading-relaxed text-sm md:text-base mt-4">
-                Whether you’re looking to establish a strong brand identity,
+                Whether you're looking to establish a strong brand identity,
                 enhance your online visibility, or create captivating marketing
                 materials, we are here to help turn your aspirations into
                 reality. Experience the art of effective communication through
                 design with SKYVAR Designs.
               </p>
             </div>
-            <div className="flex justify-center h-full md:justify-end">
+            <div className="animate-on-scroll flex justify-center h-full md:justify-end">
               <img
                 src="/MYPIC.jpg"
                 alt="About visual"
@@ -263,12 +377,14 @@ export default function App() {
       </section>
 
       {/* Services */}
-      <section id="services" className="bg-slate-850/20">
+      <section ref={servicesRef} id="services" className="bg-slate-850/20">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-14 md:py-20">
-          <SectionHeading title="What we can do for you" />
+          <div className="animate-on-scroll">
+            <SectionHeading title="What we can do for you" />
+          </div>
           <div className="mt-10 space-y-10 px-4 sm:px-0">
-            {services.map((s) => (
-              <section key={s.title} className="">
+            {services.map((s, index) => (
+              <section key={s.title} className="animate-on-scroll">
                 <div className="p-4 sm:p-6 rounded-2xl bg-slate-800/60 ring-1 ring-white/10">
                   <h3 className="font-bold text-white text-lg sm:text-xl">
                     {s.title}
@@ -277,11 +393,11 @@ export default function App() {
                     {s.desc}
                   </p>
                 </div>
-                <div className="mt-4 flex flex-wrap items-center justify-start gap-4">
+                <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
                   {s.images.map((src, i) => (
                     <figure
                       key={src + i}
-                      className="relative overflow-hidden md:h-[312px] md:w-[330px] sm:h-[208px] sm:w-[220px] w-[160px] h-[150px] rounded-xl ring-1 ring-white/10 bg-slate-800/40"
+                      className="relative overflow-hidden md:h-[312px] md:w-fit sm:h-[208px] sm:w-fit w-fit h-120px [@media(max-width:338px)]:w-full [@media(max-width:338px)]:h-fit h-[110px] rounded-md ring-1 ring-white/10 bg-slate-800/40"
                     >
                       <img
                         src={src}
@@ -299,6 +415,7 @@ export default function App() {
 
       {/* Reviews */}
       <section
+        ref={reviewsRef}
         id="reviews"
         className="relative bg-cover bg-center"
         style={{ backgroundImage: "url(/Back%202.jpg)" }}
@@ -307,9 +424,9 @@ export default function App() {
         <div className="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
           <div className="rounded-3xl bg-white/10 backdrop-blur-xl ring-1 ring-white/20 overflow-hidden">
             <div className="grid md:grid-cols-2 gap-0">
-              <div className="p-8 md:p-12">
+              <div className="animate-on-scroll p-8 md:p-12">
                 <div className="text-sky-300 text-6xl leading-none select-none mb-4">
-                  ““
+                  ""
                 </div>
                 <h3 className="text-4xl md:text-5xl font-extrabold text-slate-100 leading-tight">
                   Hear from our
@@ -321,7 +438,9 @@ export default function App() {
                   say!
                 </p>
               </div>
-              <Carousel />
+              <div className="animate-on-scroll">
+                <Carousel />
+              </div>
             </div>
           </div>
         </div>
@@ -463,7 +582,7 @@ function Carousel() {
 
   const [index, setIndex] = useState(0);
 
-  useEffect(() => {
+  useGSAP(() => {
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % slides.length);
     }, 3500);
@@ -523,9 +642,9 @@ function Carousel() {
           />
         ))}
       </div>
-      <p className="text-center text-slate-200/80 text-sm mt-2">
+      {/* <p className="text-center text-slate-200/80 text-sm mt-2">
         Slide {index + 1} of {slides.length}
-      </p>
+      </p> */}
     </div>
   );
 }
