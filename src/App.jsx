@@ -61,18 +61,6 @@ export default function App() {
   const services = useMemo(
     () => [
       {
-        title: "Brand Logo Designs",
-        desc: "Unique, timeless logos that capture your brand identity and leave a lasting impression.",
-        images: [
-          "/Logo%20final.png",
-          "/20230104_005109.jpg",
-          "/Coffee.jpg",
-          "/sign.png",
-          "/WhatsApp%20Image%202025-09-18%20at%2018.51.52.jpeg",
-          "/WhatsApp%20Image%202025-09-18%20at%2018.48.48(1).jpeg",
-        ],
-      },
-      {
         title: "Social Media Flyer Designs",
         desc: "Engaging, scroll‑stopping flyers tailored for social media to connect instantly.",
         images: [
@@ -102,6 +90,18 @@ export default function App() {
           "/foot.jpg",
           "/Rhino%20BUSINESSCARD%20IMAGE.jpg",
           "/WhatsApp%20Image%202025-09-18%20at%2018.46.02.jpeg",
+        ],
+      },
+      {
+        title: "Brand Logo Designs",
+        desc: "Unique, timeless logos that capture your brand identity and leave a lasting impression.",
+        images: [
+          "/Logo%20final.png",
+          "/20230104_005109.jpg",
+          "/Coffee.jpg",
+          "/sign.png",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.51.52.jpeg",
+          "/WhatsApp%20Image%202025-09-18%20at%2018.48.48(1).jpeg",
         ],
       },
     ],
