@@ -77,10 +77,7 @@ export default function App() {
         title: "Social Media Flyer Designs",
         desc: "Engaging, scroll‑stopping flyers tailored for social media to connect instantly.",
         images: [
-          "/flyer.png",
           "/Stand%20Out.png",
-          "/WhatsApp%20Image%202025-09-18%20at%2018.54.13.jpeg",
-          "/WhatsApp%20Image%202025-09-18%20at%2018.54.12(1).jpeg",
           "/WhatsApp%20Image%202025-09-18%20at%2018.54.12.jpeg",
           "/WhatsApp%20Image%202025-09-18%20at%2018.48.48.jpeg",
           "/WhatsApp%20Image%202025-09-18%20at%2018.48.47(2).jpeg",
@@ -113,7 +110,6 @@ export default function App() {
           "/20230104_005109.jpg",
           "/Coffee.jpg",
           "/sign.png",
-          "/WhatsApp%20Image%202025-09-18%20at%2018.51.52.jpeg",
           "/WhatsApp%20Image%202025-09-18%20at%2018.48.48(1).jpeg",
         ],
       },
@@ -306,7 +302,7 @@ export default function App() {
                 <img
                   src="/ProfilePic1.jpg"
                   alt="Brand Owner"
-                  className="relative top-15 scale-150 w-full h-[240px] sm:h-[300px] md:h-[360px] object-cover ring-2 ring-white/20"
+                  className="relative scale-130 w-full h-[240px] sm:h-[300px] md:h-[360px] object-cover position-center ring-2 ring-white/20"
                 />
               </div>
             </div>
